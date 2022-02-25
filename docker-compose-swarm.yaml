@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+    web:
+        image: mkarchev/php-nginx
+        deploy:
+            replicas: 3
+        ports:
+            - 8080:80
+        container_name: web
+        volumes:
+            - "${PROJECT_ROOT}:/var/www/html:ro"
+        networks:
+            - app-network
+    db:
+        image: mkarchev/bgapp-db:0.1
+        container_name: db
+        networks:
+            - app-network
+        environment:
+            MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
+networks:
+    app-network:
