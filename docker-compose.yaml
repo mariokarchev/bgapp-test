@@ -6,7 +6,7 @@ services:
             dockerfile: Dockerfile.web
         image: web:0.1
         ports:
-            - 8080:80
+            - 8082:80
         container_name: web
         volumes:
             - "${PROJECT_ROOT}:/var/www/html:ro"
